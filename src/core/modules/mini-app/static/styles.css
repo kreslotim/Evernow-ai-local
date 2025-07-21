@@ -1,0 +1,606 @@
+/*───────────────────────────────────────────
+  Theme & Global Styles
+───────────────────────────────────────────*/
+:root {
+  --radius: 1.25rem;
+  --blur: 16px;
+  --bg-strong: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.2);
+  --gradient: linear-gradient(135deg, #ff5ec4, #5e9aff, #ffdd5e);
+  --shadow-light: rgba(0, 0, 0, 0.12);
+  --font: 'Inter', sans-serif;
+  --spacing: 1rem;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  padding: var(--spacing);
+  background: linear-gradient(180deg, #d3d6df 0%, #e8e9ee 40%, #fff 100%);
+  font-family: var(--font);
+  letter-spacing: -0.05em;
+  color: #222;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.38;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
+  mix-blend-mode: multiply;
+}
+
+/*───────────────────────────────────────────
+  Animation & Base
+───────────────────────────────────────────*/
+.animate-fadeIn {
+  opacity: 0;
+  animation: fadeIn 0.8s 0.2s forwards;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.liquid {
+  position: relative;
+  background: var(--bg-strong);
+  backdrop-filter: blur(var(--blur)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(150%);
+  border: 1px solid var(--border-light);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.video {
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.liquid:hover {
+  transform: scale(1.03);
+}
+
+/*───────────────────────────────────────────
+  Layout
+───────────────────────────────────────────*/
+.container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 0.8rem; /* Уменьшаем отступы для максимального использования экрана */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Уменьшаем промежутки */
+}
+
+.header {
+  text-align: center;
+  padding: var(--spacing);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.header p {
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
+
+/*───────────────────────────────────────────
+  Hypothesis Items
+───────────────────────────────────────────*/
+
+/* Убираем границы у общего контейнера */
+#hypothesis-content {
+  margin-top: 2rem; /* Отступ сверху от заголовка */
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+#hypothesis-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  width: 100%;
+}
+
+/* Белые полупрозрачные карточки для каждого абзаца */
+.hypothesis-item {
+  padding: calc(var(--spacing) * 1.2);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px var(--shadow-light);
+  position: relative;
+  margin-bottom: calc(var(--spacing) * 1);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.hypothesis-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px var(--shadow-light);
+}
+
+.hypothesis-item .card-title {
+  font-size: 1.2rem;
+  color: #313944;
+  margin-bottom: 0.75rem;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+.hypothesis-item .card-content {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4a5568;
+  text-align: left;
+  margin: 0;
+}
+
+/* Стили для лучшего отображения абзацев в тексте гипотезы */
+.hypothesis-text p {
+  margin-bottom: 1em;
+}
+
+.hypothesis-text br + br {
+  margin-bottom: 0.8em;
+}
+
+/*───────────────────────────────────────────
+  Action Buttons
+───────────────────────────────────────────*/
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  margin-top: 2rem; /* Отступ сверху от карточек */
+  margin-bottom: 2rem; /* Отступ снизу */
+}
+
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #313944;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 8px 32px var(--shadow-light);
+  background-clip: padding-box;
+}
+
+.action-button::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--radius);
+  background: var(--gradient);
+  z-index: -1;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+}
+
+.action-button:hover {
+  box-shadow:
+    0 12px 48px var(--shadow-light),
+    0 0 16px rgba(94, 154, 255, 0.3);
+}
+
+.action-button:active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 80%);
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  to {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/*───────────────────────────────────────────
+  Social Image & Download Button
+───────────────────────────────────────────*/
+.social-image-container {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+.social-image-header h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.social-image-header p {
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+
+.social-image-wrapper {
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px var(--shadow-light);
+  display: inline-block;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+}
+
+.social-image {
+  border-radius: calc(var(--radius) - 0.5rem);
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#download-overlay-btn,
+.fa-download,
+.fas.fa-download {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/*───────────────────────────────────────────
+  Loading / Error States
+───────────────────────────────────────────*/
+.loading,
+.error {
+  padding: calc(var(--spacing) * 2);
+  border-radius: var(--radius);
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Пульсирующая анимация для блока загрузки */
+.loading p:first-child {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/*───────────────────────────────────────────
+  Report Title Styling
+───────────────────────────────────────────*/
+#report-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+#report-subtitle {
+  opacity: 0.8;
+  font-size: 1rem;
+}
+
+/*───────────────────────────────────────────
+  Shimmer Cursor Effect
+───────────────────────────────────────────*/
+.shimmer {
+  cursor: none;
+}
+.shimmer::after {
+  content: '';
+  position: fixed;
+  top: var(--y, 0);
+  left: var(--x, 0);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: fade 0.5s;
+  z-index: 999;
+}
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Стили для кнопки копирования удалены */
+
+/* Темная кнопка "Завершить" */
+.action-button-primary {
+  background: rgba(49, 57, 68, 0.25);
+  color: #fff;
+}
+.action-button-primary:hover {
+  background: rgba(49, 57, 68, 0.35);
+}
+
+/* Стили для иконок в кнопках */
+.action-button i {
+  margin-right: 0.5rem;
+  font-size: 1.1em;
+}
+.action-button span {
+  display: inline-block;
+}
+#download-overlay-btn i {
+  margin-right: 0.5rem;
+}
+
+/*───────────────────────────────────────────
+  Luscher Test Styles
+───────────────────────────────────────────*/
+#luscher-test {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.luscher-header {
+  text-align: center;
+  margin-bottom: 0.8rem; /* Минимальный отступ для максимального использования экрана */
+}
+
+.luscher-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.luscher-header h2 {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.luscher-header p {
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+.palette-grid {
+  display: grid;
+  /* Сетка 4x2 для 8 цветов теста Люшера */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin: 0.5rem 0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 60vh; /* Занимаем минимум 60% высоты экрана */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.color-chip {
+  /* Прямоугольники с четкими границами для соотношения 4:3 */
+  width: 100%;
+  height: 120px; /* Увеличиваем высоту для заполнения экрана и соотношения 4:3 */
+  border-radius: 8px; /* Уменьшаем скругление для четкости */
+  border: 3px solid transparent; /* Прозрачная граница */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1); /* Внутренняя подсветка */
+  transform: scale(1);
+  transform-origin: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Добавляем эффект при наведении */
+.color-chip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.color-chip:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.2),
+    0 3px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 3px rgba(255, 255, 255, 0.2);
+  border-color: transparent; /* Прозрачная граница при hover */
+  border-width: 4px; /* Увеличиваем толщину границы при hover */
+}
+
+.color-chip:hover::before {
+  opacity: 1;
+}
+
+.color-chip:active {
+  transform: scale(0.95) translateY(1px); /* Уменьшение при нажатии */
+  border-width: 2px; /* Уменьшаем границу при нажатии */
+  border-color: transparent; /* Прозрачная граница при нажатии */
+}
+
+/* Анимация исчезновения */
+.color-chip.disappearing {
+  animation: disappear 0.5s ease-out forwards;
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  30% {
+    opacity: 0.7;
+    transform: scale(1.08) rotate(3deg); /* Немного уменьшили масштаб анимации */
+  }
+  70% {
+    opacity: 0.3;
+    transform: scale(0.8) rotate(-3deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+    visibility: hidden;
+  }
+}
+
+/* ✅ НОВАЯ АНИМАЦИЯ: Пульсация для активных цветов */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+/* Применяем пульсацию только к активным цветам */
+.color-chip:not(.disappearing) {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Останавливаем пульсацию при hover */
+.color-chip:hover {
+  animation: none;
+}
+
+#progress {
+  min-height: 1.2em;
+  text-align: center;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Улучшенные стили для заголовка теста */
+.luscher-header h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #313944;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.luscher-header p {
+  margin-top: 0.2rem;
+  opacity: 0.8;
+  font-size: 0.9rem;
+  color: #4a5568;
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem 0.5rem; /* Минимальные отступы на мобильных */
+    gap: 0.3rem;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0.8rem;
+    padding: 1rem;
+    min-height: 70vh; /* Больше высоты на мобильных */
+    margin: 0.3rem 0;
+  }
+
+  .color-chip {
+    height: 90px; /* Увеличенная высота для мобильных с четкими границами */
+    border-radius: 6px;
+    border: 3px solid transparent; /* Прозрачные границы */
+  }
+
+  .color-chip:hover {
+    transform: scale(1.03) translateY(-1px);
+    border-width: 4px;
+    border-color: transparent;
+  }
+
+  .luscher-header h1 {
+    font-size: 1.1rem;
+  }
+
+  .luscher-header p {
+    font-size: 0.85rem;
+  }
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.color-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid transparent;
+}

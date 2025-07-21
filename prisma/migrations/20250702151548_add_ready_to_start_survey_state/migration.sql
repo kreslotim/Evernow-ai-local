@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "UserPipelineState" ADD VALUE 'READY_TO_START_SURVEY';

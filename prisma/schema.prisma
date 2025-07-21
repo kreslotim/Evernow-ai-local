@@ -1,0 +1,311 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Language {
+  EN
+  RU
+}
+
+enum ProcessingStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum AnalyzeType {
+  DEFAULT // Единственный тип анализа
+}
+
+enum UserFunnelAction {
+  START
+  ONBOARDING_COMPLETE
+  ANALYSIS_START
+  ANALYSIS_COMPLETE
+  SUBSCRIPTION_PURCHASE
+  REFERRAL_INVITE
+  FEELINGS_SHARE
+  PSY_TEST_COMPLETE
+  HYPOTHESIS_RECEIVE
+  VIDEO_SHARE
+  FUNNEL_COMPLETE
+}
+
+enum FunnelState {
+  BOT_JOINED
+  FIRST_PHOTO_ANALYSIS
+  FEELINGS_SHARED
+  PSY_TEST_PASSED
+  HYPOTHESIS_RECEIVED
+  INVITED_FRIENDS_7
+  VIDEO_SHARED
+  PAYMENT_MADE
+  FUNNEL_COMPLETED
+}
+
+enum OfferStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum UserPipelineState {
+  WELCOME_SENT // Отправлено приветствие, ожидаем фото
+  WAITING_PHOTOS // Ожидаем 2 фотографии
+  PHOTOS_RECEIVED // Фото получены, анализ в процессе
+  ANALYSIS_COMPLETED // Анализ завершён, готовы к следующему шагу
+  READY_TO_START_SURVEY // Фотографии получены, готовы начать опрос (анализ в фоне)
+  TIMER_STARTED // Таймер запущен, ожидаем 3 минуты
+  WAITING_FEELINGS // Ожидаем текст или голосовое о чувствах
+  SURVEY_IN_PROGRESS // Диагностический опрос в процессе
+  WAITING_CUSTOM_ANSWER_Q1 // Ожидаем кастомный ответ на вопрос 1
+  WAITING_CUSTOM_ANSWER_Q2 // Ожидаем кастомный ответ на вопрос 2
+  WAITING_CUSTOM_ANSWER_Q3 // Ожидаем кастомный ответ на вопрос 3
+  WAITING_CUSTOM_ANSWER_Q4 // Ожидаем кастомный ответ на вопрос 4
+  WAITING_VOICE_SURVEY // Ожидаем голосовое сообщение в конце опроса
+  WAITING_ANALYSIS_FOR_HYPOTHESIS // Ожидаем завершения анализа фотографий для создания гипотезы
+  MINI_APP_OPENED // Мини-приложение открыто
+  CREATING_HYPOTHESIS // Создаём блок-гипотезу
+  HYPOTHESIS_SENT // Блок-гипотеза отправлена, ожидаем ответ
+  HYPOTHESIS_REJECTED // Гипотеза отклонена (первый раз)
+  FINAL_MESSAGE_SENT // Финальное сообщение отправлено
+  ONBOARDING_COMPLETE // Онбординг завершён
+}
+
+enum EventType {
+  FUNNEL_ACTION_CHANGE
+  FUNNEL_STATE_CHANGE
+  PIPELINE_STATE_CHANGE
+}
+
+model User {
+  id                   String             @id @default(cuid())
+  telegramId           String             @unique
+  telegramUsername     String?
+  telegramChatId       String?
+  email                String?            @unique
+  password             String?
+  analysisCredits      Int                @default(1)
+  language             Language           @default(RU)
+  referralCode         String             @unique
+  role                 Role               @default(USER)
+  isBanned             Boolean            @default(false)
+  banReason            String?
+  bannedAt             DateTime?
+  isBotBlocked         Boolean            @default(false)
+  botBlockedAt         DateTime?
+  funnelAction         UserFunnelAction? // действие пользователя в воронке
+  funnelState          FunnelState? // состояние пользователя в воронке
+  pipelineState        UserPipelineState? // состояние в едином пайплайне онбординга
+  subscriptionActive   Boolean            @default(false)
+  subscriptionExpiry   DateTime?
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  photoFailureAttempts Int                @default(0)
+
+  // Relations
+  analyses         Analyze[]
+  referralsGiven   Referral[]    @relation("ReferrerUser")
+  referralReceived Referral?     @relation("InvitedUser")
+  offers           Offer[]
+  userInfos        UserInfo[]
+  userTimer        UserTimer?
+  funnelEvents     FunnelEvent[]
+
+  @@index([telegramId])
+}
+
+model Analyze {
+  id                 String           @id @default(cuid())
+  userId             String
+  type               AnalyzeType      @default(DEFAULT)
+  status             ProcessingStatus @default(PENDING)
+  retryCount         Int              @default(0)
+  inputPhotoUrl      String[]
+  analysisResultText String?
+  summaryText        String?
+  postcardImageUrl   String?
+  errorMessage       String?
+  cost               Int              @default(1)
+  chatId             String?
+  messageId          Int?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+
+  // Relations
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userInfo UserInfo? @relation("AnalyzeInfo")
+
+  @@index([userId])
+}
+
+model Referral {
+  id            String   @id @default(cuid())
+  referrerId    String
+  invitedUserId String   @unique
+  createdAt     DateTime @default(now())
+
+  // Relations
+  referrer    User @relation("ReferrerUser", fields: [referrerId], references: [id])
+  invitedUser User @relation("InvitedUser", fields: [invitedUserId], references: [id])
+
+  @@index([referrerId])
+}
+
+model Offer {
+  id            String      @id @default(cuid())
+  userId        String
+  title         String
+  description   String
+  status        OfferStatus @default(PENDING)
+  adminResponse String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+}
+
+model UserInfo {
+  id                      String   @id @default(cuid())
+  userId                  String
+  analysisId              String?  @unique
+  description             String?
+  feelings                String? // Текст о чувствах пользователя (из опроса + голосового)
+  feelingsAnalysis        String? // Анализ чувств от DeepSeek
+  blockHypothesis         String? // Блок-гипотеза, созданная DeepSeek
+  secondOrderHypothesis   String? // Гипотеза второго порядка
+  summaryText             String? // Краткое резюме анализа для финального сообщения
+  hypothesisRejectedCount Int      @default(0) // Счётчик отклонений гипотезы
+  luscherTestResult       String? // Результат цветового теста Люшера в JSON формате
+  surveyAnswers           String? // Ответы на диагностический опрос в JSON формате
+  surveyProgress          Int?     @default(0) // Прогресс прохождения опроса (0-5)
+  photoUrls               String? // JSON массив URL фотографий для анализа
+  socialCardUrl           String? // URL сгенерированной социальной карточки
+  luscherTestCompleted    Boolean  @default(false) // Флаг, указывающий на прохождение теста Люшера
+  luscherTestError        Boolean  @default(false)
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  // Relations
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysis Analyze? @relation("AnalyzeInfo", fields: [analysisId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model UserTimer {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  chatId    String
+  messageId Int?
+  startTime DateTime @default(now())
+  endTime   DateTime
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Prompt {
+  id          String   @id @default(cuid())
+  key         String
+  locale      String   @default("ru") // Новое поле для поддержки многоязычности
+  content     String
+  description String?
+  provider    String
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([key, locale]) // Составной уникальный ключ для поддержки одного ключа на разных языках
+  @@index([key])
+  @@index([provider])
+  @@index([locale])
+}
+
+model FunnelEvent {
+  id            String             @id @default(cuid())
+  userId        String
+  funnelAction  UserFunnelAction?
+  funnelState   FunnelState?
+  pipelineState UserPipelineState?
+  eventType     EventType
+  previousValue String?
+  newValue      String?
+  createdAt     DateTime           @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([eventType])
+  @@index([createdAt])
+  @@index([userId, createdAt])
+}
+
+// Новая модель для диагностических логов
+model DiagnosticLog {
+  id         String   @id @default(cuid())
+  userId     String? // Может быть null для системных логов
+  level      String // INFO, WARN, ERROR, DEBUG
+  component  String // mini-app, image-processing, etc.
+  action     String // copy-button-click, image-load, etc.
+  message    String
+  metadata   String? // JSON строка с дополнительными данными
+  userAgent  String?
+  ipAddress  String?
+  telegramId String?
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([component])
+  @@index([level])
+  @@index([createdAt])
+  @@index([userId, component, createdAt])
+} 
+
+model Philosophy {
+  id   String @id @default(uuid())
+  text String
+}
+
+// Модель для фотографий приветствия
+model WelcomePhoto {
+  id          String   @id @default(cuid())
+  title       String // Название фотографии (например, "Основная фотография")
+  description String? // Описание фотографии
+  fileName    String // Оригинальное имя файла
+  filePath    String // Относительный путь к файлу от корня проекта
+  fileSize    Int // Размер файла в байтах
+  mimeType    String // MIME тип файла (image/jpeg, image/png, etc.)
+  isActive    Boolean  @default(true) // Активна ли фотография
+  order       Int      @default(0) // Порядок отображения
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([order])
+  @@index([isActive, order])
+}

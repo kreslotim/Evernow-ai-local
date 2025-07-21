@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "tsConfigPath": "tsconfig.build.json",
+    "assets": [
+      {
+        "include": "core/modules/mini-app/static/**/*",
+        "outDir": "dist",
+        "watchAssets": true
+      },
+      {
+        "include": "fonts/**/*",
+        "outDir": "dist"
+      },
+      {
+        "include": "common/backgrounds/**/*",
+        "outDir": "dist"
+      },
+      {
+        "include": "common/video/**/*",
+        "outDir": "dist"
+      },
+      {
+        "include": "bot/prompts/**/*",
+        "outDir": "dist"
+      }
+    ]
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "welcome": "Welcome! Bot is running.",
+  "help": "Help message here",
+  "common": {
+    "default_user": "User",
+    "back": "Back"
+  },
+  "errors": {
+    "account_banned": "Your account has been banned for sending incorrect photos. If you believe this is an error, contact support: {{supportLink}}",
+    "photo_warning": "⚠️ This is your {{attempt}} attempt to send an incorrect photo. After {{maxAttempts}} failed attempts your account will be banned. Please send a clear photo with one face.",
+    "photo_token_warning": "⚠️ This is your {{attempt}} attempt to send an incorrect photo. If you send another incorrect photo, we will deduct 1 token from you. Please send a clear photo with one face.",
+    "photo_token_deducted": "❌ The photo was incorrect, we deducted 1 token from you. Please send a clear photo with one face.",
+    "ai_analysis_failed": "It seems something happened with my algorithms. Please send another photo to repeat the analysis🙏🏻",
+    "general": "An error occurred. Please try again later or contact support.",
+    "user_not_found": "User not found. Please start with /start command",
+    "photo_failed": "❌ Failed to get the photo. Please try again.",
+    "face_photo_validation_failed": "❌ Face photo failed the check. Please send a clear photo of your face with good lighting, no glasses, and a neutral expression.",
+    "palm_photo_validation_failed": "❌ Palm photo failed the check. Please send a clear photo of one palm with good lighting and no distracting objects.",
+    "analysis_creation_failed": "❌ Error creating analysis. Please try sending photos again.",
+    "voice_processing_error": "❌ Voice message processing error. Please try again.",
+    "photo_validation_failed": "❌ The photos didn’t pass the check. Please send 3 clear pictures: a relaxed face and two palms without glasses.",
+    "custom_answer_short": "❌ Answer too short. Please write a more detailed answer (minimum 5 characters).",
+    "custom_answer_long": "❌ Answer too long. Please shorten your answer to 500 characters.",
+    "custom_answer_processing": "❌ Error processing answer. Please try again.",
+    "survey_state_error": "❌ Could not determine current survey question. Please try again.",
+    "hypothesis_creation_failed": "❌ Error creating hypothesis. Proceeding to next step with simplified version.",
+    "generic_error": "An error occurred. Please try later.",
+    "navigation_failed": "❌ Navigation error occurred. Please try again.",
+    "ban_reason_multiple_failures": "Multiple incorrect data submissions"
+  },
+  "greeting": {
+    "auto_registered": "<b>«On how much you believe in your son's miracles, on that many they happen with you»</b>\n\nTake a photo of your face and open palms at good lighting, send them here — we'll fix your A point.\n\nLater, you can compare and be surprised by the difference.",
+    "welcome_back": "Welcome back, {{name}}! You have {{remainingGenerations}} analyses remaining.",
+    "referral_bonus": "🎉 Referral bonus! You've been credited with 1 additional analysis!"
+  },
+  "videos": {
+    "analysis_processing": "https://media.istockphoto.com/id/1319025003/video/digital-countdown-timer-in-white-circle-for-60-seconds-on-black-background.mp4?s=mp4-640x640-is&k=20&c=6Jk7eVfqEP15_kKmHKNoPtQpcVRa4HQ60H6gQevA9Q4="
+  },
+  "onboarding": {
+    "photoRequest": "Make a photo of your face at good lighting. Send it here — we'll fix your point A.",
+    "processingPhotos": "⏳ Processing your photos...",
+    "mainConclusion": "🎯 Main conclusion:",
+    "timerMessage": "Now let's get started with implementing the potential of our meeting. It's time to remember the sacred.\n\n<b>What are the boldest ambitions, desires, or dreams you haven't yet been able to achieve?</b>\n\nTo answer this question for yourself, move to a quiet secluded place and direct your attention to your body.\n\nStay in your thoughts and feelings about this question for the next 3 minutes.\n\nP.S. Click the button to...",
+    "skipTimerButton": "⚡ Share results now",
+    "feelsMessage": "Try to briefly describe which ambitions are still not realized.\n\nAnd tell more about what thoughts and feelings you had in your body.\n\nDescribe the brightest feelings and specify where in your body they manifested. For example: <i>felt tightness in the chest and sharp pain in the shoulders on the background of anxiety and missed opportunities.</i>\n\nYou can send a voice message (duration 1-2 minutes) or text.",
+    "feelsMessageDeclined": "It seems something went wrong — maybe you still don't trust me enough.\n\n<b>Try to describe your feelings and experiences on the topic of ambitions more thoroughly, inspired by the experiences of those who have already done this.</b>",
+    "triggerMessage": "<blockquote>It is impossible to miss all the opportunities, only temporarily lose contact with the one who forms them.</blockquote>",
+    "effects_selection": "We have\n\n— income growth analysis\n\n— optimal location analysis\n\n— compatibility analysis in personal/business relationships\n\n— future child analysis and much more \n\n🔍 I predict all this based on your physiognomy. On 1-3 photos.\n\nCurrently, you have 3 free options. Choose one of them👇🏻",
+    "analysis_intro": "So, I've prepared your analysis👇🏻",
+    "processingFeelings": "🔍 Ok, analyzing your feelings...",
+    "waitingPhotoAnalysis": "⏳ Waiting for photo analysis to complete for creating full hypothesis...\n\n<i>This may take up to 2 minutes</i>",
+    "nextButton": "▶️ Next",
+    "miniAppMessage": "Click the button «Yes» in the window below",
+    "miniAppButton": "📊 Open analysis results",
+    "creatingHypothesis": "✨ Creating a hypothesis for you",
+    "hypothesisQuestion": "Matches?",
+    "hypothesisYes": "Yes",
+    "hypothesisNo": "No",
+    "hypothesisNoResponse": "Click the button below",
+    "hypothesisNextButton": "Next",
+    "final": "I can do so much more! I can tell you what you should be, what awaits you in the future, what your growth points are in finances and health, what your child can become, what compatibility you have with a partner or business partner and much more!..\n\nAnd most importantly — strangers will no longer be strangers. Just one photo is enough, and we'll analyze them to the bone😉\n\nYou can purchase more analyses or invite friends to the app and get free analyses)\n\nHow do you want to proceed?",
+    "buy_more_button": "💎 Buy More",
+    "get_free_button": "✨ Get Free",
+    "hypothesisReject3": "🚫 No",
+    "hypothesisEnd": "Something went wrong. Please try again later or contact support.",
+    "finalMessage": "Now you know what blocks are hindering your ambitions and what potential is hidden within.\n\n<b>What's next?</b>\n\nChoose one of the options below to continue your journey to unlocking your potential:",
+    "shareWithFriendsButton": "📢 Share with friends",
+    "makeRepostButton": "📹 Make a repost",
+    "purchaseParticipationButton": "💎 Purchase participation",
+    "shareMessage": "🎁 <b>Share the bot with friends!</b>\n\nYour referral link:\n<code>{{referralLink}}</code>\n\n✨ <b>Special offer:</b>\nWhen 7 friends join using your link, you'll get <b>one month subscription for free!</b>\n\n<i>Friends invited: {{referralCount}}/7</i>",
+    "shareText": "Hello\n\nI'm sharing with you an insight assistant based on ii - Aruai. It's based on neuro research. It helps to discover and get out of the limitations of the subconscious in an eco-friendly way. I tried it and really liked it",
+    "repostMessage": "📹 <b>Make a repost and get a month free!</b>\n\nWatch this video and share it on your social media:\n{{videoLink}}\n\nAfter reposting, click the \"Check\" button below.",
+    "repostCheckButton": "✅ Check",
+    "repostSuccessMessage": "🎉 <b>Great!</b>\n\nYou've received a month subscription for free! Now you can continue using all bot features.",
+    "repostAlreadyActivated": "✅ Subscription already activated! You have already received your free month.",
+    "subscriptionGrantedMessage": "🎉 Congratulations! You got a free month subscription!",
+    "purchaseMessage": "💎 <b>Get full access</b>\n\nGet unlimited access to all bot features:\n\n✅ Daily soft support\n✅ Personal recommendations\n✅ Exclusive content\n\n📄 <a href='{{offerLink}}'>Offer</a>\n🔒 <a href='{{privacyLink}}'>Privacy Policy</a>",
+    "purchaseUnavailable": "💎 <b>Subscription Setup</b>\n\n⚠️ Subscription system is temporarily unavailable. We are working on fixing this.\n\nContact support for assistance: {{supportLink}}\n\n📄 <a href='{{offerLink}}'>Offer</a>\n🔒 <a href='{{privacyLink}}'>Privacy Policy</a>",
+    "purchaseButton": "💎 Purchase participation",
+    "backButton": "◀️ Back",
+    "backToQuestionButton": "Back",
+    "completed": "🎉 Your onboarding is complete! Now you can use all bot features.",
+    "processing_voice": "🎤 Processing voice message...",
+    "custom_answer_request": "<b>💬 Write your custom answer:</b>\n\n<i>Answer question {{questionNumber}} in your own words</i>",
+    "processing_voice_message": "🎤 Processing voice message...",
+    "voice_processing_error_retry": "❌ Voice message processing error. Please try again.",
+    "voice_question": "<b>5/5</b> Imagine you're taking the first step towards a big goal, and you're being harshly criticized, including by loved ones.\n\nRecord a voice message here about what thoughts first come to mind and where sensations appear in your body, describe in detail what they are like:\n\n💭<i>For example: First thoughts \"I'm not good enough\", \"Maybe it really is too early\". Where it squeezes the most, in the temples, throat, chest area or elsewhere</i>\n\n🎤 <b>Press and hold the voice message recording button</b>",
+    "voice_invalid": "Every voice matters, but sometimes technology is like a foggy mirror—it distorts the meaning. Reframe your thought, and I’ll hear it clearly. Ready? 🎤",
+    "survey_results_header": "Diagnostic survey results:\n\n",
+    "voice_message_footer": "5. Voice message about thoughts and sensations:\n   {{voiceText}}",
+    "answer_fallback": "Answer {{answerIndex}}",
+    "custom_answer_option": "Custom option",
+    "survey": {
+      "custom_answer_hint": "💬 <i>Or simply write your own answer as a message</i>",
+      "q1": {
+        "text": "<b>Diagnostic questions:</b>\n\nAnswer honestly, don't try to please, including yourself:\n\n<b>1/5</b> Someone badly let you down. Your first reaction — one verb:",
+        "question_title": "Someone badly let you down. Your first reaction:",
+        "options": [
+          "\"Cut\" — immediately cut contact",
+          "\"Argue\" — say everything to their face",
+          "\"Ignore\" — pretend nothing happened",
+          "\"Fix\" — take the problem on myself"
+        ]
+      },
+      "q2": {
+        "text": "<b>2/5</b> What useful habit do you drop first when overloaded?",
+        "question_title": "What useful habit do you drop first when overloaded:",
+        "options": ["Sports", "Breathing practices", "Planning the day", "Healthy eating", "Sufficient sleep"]
+      },
+      "q3": {
+        "text": "<b>3/5</b> You have only 30 minutes of free time left in the day. What will you spend it on first?",
+        "question_title": "You have only 30 minutes of free time left. What will you spend it on:",
+        "options": [
+          "Time with loved ones",
+          "Personal learning / reading",
+          "Physical activity",
+          "Creativity / hobby",
+          "Completing important work task"
+        ]
+      },
+      "q4": {
+        "text": "<b>4/5</b> In three years you're screaming with joy. What exactly came true?",
+        "question_title": "In three years you're screaming with joy. What exactly came true:",
+        "options": [
+          "Financial goal (passive income / capital)",
+          "Project impacted thousands of people",
+          "Personal record victory (sports, creativity, science)",
+          "Complete freedom of time and place of life",
+          "Harmonious relationships / dream family"
+        ]
+      },
+      "results_header": "Diagnostic survey results:\n\n",
+      "voice_message_prefix": "5. Voice message about thoughts and sensations:\n   "
+    },
+    "middleware": {
+      "use_buttons_for_survey": "📋 Please use buttons to answer survey questions",
+      "record_voice_message": "🎤 Please record a voice message to complete the survey",
+      "write_custom_answer": "✍️ Please write your custom answer as a text message"
+    }
+  },
+  "mini_app": {
+    "loading_title": "Creating your insight report...",
+    "loading_subtitle": "Using AI magic ✨",
+    "report_title": "Your Insight Report",
+    "report_subtitle": "Based on the psychosomatic block hypothesis"
+  },
+  "commands": {
+    "start": "Start the bot",
+    "help": "Show help message"
+  },
+  "keyboard": {
+    "analysis": "🔭 Analysis",
+    "balance": "💰 Balance",
+    "referral": "👥 Referral",
+    "help": "❓ Help"
+  },
+  "scenes": {
+    "analysis": {
+      "send_face_photo": "📷 Send a photo of your face in good lighting",
+      "send_palms_optional": "✅ Face photo received!\n\n📷 Now you can send photos of your open palms for more accurate analysis or skip this step:",
+      "send_second_palm_optional": "✅ First palm photo received!\n\n📷 You can send a photo of the second palm or complete the analysis:",
+      "skip_palms_button": "⏭️ Skip palms",
+      "skip_second_palm_button": "📷 Send second palm",
+      "complete_analysis_button": "✅ Complete analysis",
+      "session_completed": "❌ Photo upload already completed.",
+      "send_photos": "📷 Send 2 photos: face and hands at good lighting",
+      "send_second_photo": "✅ Received photo: 1/3\n\n📷 Send second photo in the chat👇🏻",
+      "send_third_photo": "✅ Received photo: 2/3\n\n📷 Send third photo in the chat👇🏻",
+      "start_analysis": "🚀 Start",
+      "too_many_photos": "❌ Too many photos! Maximum 2 photos.\n\nStart again with the /analyze command",
+      "started": "⏳ Saving your photos...",
+      "not_an_image": "❌ Please send an image",
+      "error": "❌ Error saving photo: {{error}}",
+      "queued": "⏳ Your analysis will be ready in 1-2 minutes, while you can check out our channels\n\n— by <a href=\"https://t.me/oh_my_zen\">web development</a>\n— by <a href=\"https://t.me/avato_ai\">visual content in AI</a>",
+      "pagination": {
+        "previous": "⬅️",
+        "next": "➡️"
+      },
+      "face_not_detected": "Кажется, ты прислал фото, где ИИ не может определить лицо или ладонь. Пожалуйста, проверь фотографию и пришли ещё раз 🙏🏻"
+    },
+    "balance": {
+      "title": "Your Balance",
+      "description": "You have {{count}} tokens remaining",
+      "info": "💰 <b>Your Balance:</b>\n\n• Remaining tokens: {{remainingGenerations}}\n• Referrals: {{referrals}}",
+      "infoWithSubscription": "💰 <b>Your Balance:</b>\n\n✅ <b>Active subscription until {{subscriptionExpiry}}</b>\n• Remaining tokens: {{remainingGenerations}}\n• Referrals: {{referrals}}",
+      "buy_credits_button": "✨ Buy Tokens",
+      "no_credits": "You're out of tokens.\n\nPurchase new tokens to continue using the bot."
+    },
+    "referral": {
+      "title": "Referral Program",
+      "description": "Invite friends and get bonuses!",
+      "info": "🫂 <b>Referral Program</b>\n\nYou invited: <b>{{count}}</b> users\n\nYour referral code: <b>{{code}}</b>\n\nShare this link to invite friends:\n<a href=\"{{link}}\">{{link}}</a>\n\nFor each new 3 users who join through your link, you will receive {{referralBonus}} free tokens!",
+      "success": "🎉 Referral successfully applied! You received {{referralBonus}} additional tokens.",
+      "earn_token_button": "🍀 Earn Token",
+      "subscription_prompt": "🍀 <b>Earn a free token!</b>\n\nSubscribe to our channels and get 1 free token:\n\nAfter subscribing, click the \"Check Subscription\" button",
+      "check_subscription_button": "✅ Check Subscription",
+      "already_subscribed": "✅ You already received the subscription bonus!",
+      "subscription_success": "🎉 Thank you for subscribing! You received 1 free token!",
+      "subscription_incomplete": "❌ Please subscribe to all channels to receive the bonus."
+    },
+    "packages": {
+      "title": "💳 Credit Packages",
+      "intro": "Choose a suitable credit package:\n\nYour current balance: {{remainingGenerations}} tokens",
+      "unavailable_error": "Sorry, packages are temporarily unavailable. Please try again later.",
+      "no_packages_available": "No packages are currently available.",
+      "payment_redirect_prompt": "💳 <b>Package Payment</b>\n\nClick the button below to proceed to payment:",
+      "pay_button": "💳 Proceed to Payment",
+      "payment_failed": "Error processing payment. Please try again."
+    }
+  },
+  "support": {
+    "menu": {
+      "title": "❓ Support Menu",
+      "welcome": "Choose what you need help with:",
+      "button_help": "📖 FAQ",
+      "button_links": "🔗 Useful Links",
+      "button_suggestion": "💡 Suggestion",
+      "button_support": "💬 Contact Support"
+    },
+    "help": {
+      "info": "🤖 <u>Frequently Asked Questions</u>\n\n<b>What are your analyses based on?</b>\nMy analyses are based on the concepts of physiognomy and kinetics. Yes, they are still considered unscientific, but I believe and know that it works, so I help specifically within this methodology.\n\n<b>How can this be useful to me?</b>\nHave you ever noticed that people with similar appearances behave in similar ways? I have — many times. The face is a mirror of our character, and it changes along with it. Through facial features, we can recognize deep character traits that we may not be aware of. This helps grow in relationships, finances, health (according to psychotype).\n\nAlso, you can analyze relationship compatibility through faces, as well as learn more about strangers!\n\n<b>Do you store my photos? My analyses?</b>\nNo, we delete your photos immediately after analysis. That's why we ask you to upload a photo from scratch each time. We also don't store analyses — they are deleted after 1 day.\n\n<b>How can I get tokens for free?</b>\n1) every 3 invited friends give you 1 free token!\n2) in the referral program section you can find telegram channels, subscribing to which you'll get 1 more bonus token\n\n<b>Can I get a refund?</b>\nIf you've already spent tokens — no, the service has already been provided. We spend money on AI computing power to generate analyses for you.\n\n<b>How can I contact you? I have a proposal/barter?</b>\nWrite to us at @avato_memory_help_bot"
+    },
+    "links": {
+      "info": "🔗 <b>Useful Links</b>\n\n🌐 <b>Official Website:</b>\nhttps://avato.ai\n\n📱 <b>Telegram Channel:</b>\n@avato_news\n\n"
+    },
+    "suggestion": {
+      "prompt": "💡 <b>Bot Improvement Suggestion</b>\n\nWrite your suggestion for improving the bot's functionality. We carefully review every suggestion!\n\nJust send a message with the text of your suggestion:",
+      "success": "✅ <b>Thank you for your suggestion!</b>\n\nYour suggestion has been successfully saved and will be reviewed by our team. We appreciate your contribution to the bot's development!"
+    }
+  },
+  "notifications": {
+    "new_referral": "🎉 You have a new referral! Total invited: {{referralCount}} users",
+    "referral_bonus": "🎁 Referral bonus! {{#if message}}{{message}}{{else}}You received {{bonusCredits}} tokens for {{referralCount}} invited users!{{/if}}",
+    "payment_success": "✅ Payment processed successfully! {{generationsAdded}} tokens added for {{amount}}₽",
+    "payment_failed": "❌ Payment processing error: {{error}}",
+    "made_by_face": "Analyzed in <a href=\"https://t.me/anface_bot\">AnFace AI</a>",
+    "social_sharing": "And this is for your social media, if you want to share it with friends and followers😉",
+    "analysis_complete_cta": "Want to do another analysis?🔬",
+    "make_another_button": "✨ Make Another",
+    "ask_ai_button": "🤖 Ask AI",
+    "ai_feature_development": "🚧 <b>Feature in Development</b>\n\nThank you for your interest in the AI chat feature! We are actively working on its implementation.\n\nThis functionality will be available in upcoming updates."
+  },
+  "bot": {
+    "analyze": {
+      "started": "🔄 Analysis started! Please send 2 photos for processing.",
+      "wait": "⏳ Analysis in progress... Results will be ready in 1-2 minutes."
+    }
+  },
+  "subscription": {
+    "subscribe_button": "💎 Subscribe",
+    "view_plans_button": "📋 View Plans",
+    "pay_button": "💳 Pay",
+    "pause_button": "⏸️ Pause",
+    "resume_button": "▶️ Resume",
+    "cancel_button": "❌ Cancel",
+    "confirm_cancel_button": "✅ Confirm Cancellation",
+    "required_message": "🔒 An active subscription is required to continue.\n\nSubscribe to get unlimited access to all bot features.",
+    "no_plans_available": "😔 Unfortunately, subscription plans are temporarily unavailable. Please try again later.",
+    "choose_plan_message": "💎 <b>Choose a Subscription Plan</b>\n\nSelect a suitable subscription plan to get full access to all features:",
+    "payment_link_created": "💳 <b>Payment Link Created</b>\n\nYou selected plan: <b>{{planName}}</b>\n\nClick the button below to proceed to payment:",
+    "no_active_subscription": "📋 You don't have an active subscription\n\nSubscribe to get full access to all bot features.",
+    "info_template": "💎 <b>Your Subscription</b>\n\n📋 Plan: {{planName}}\n📊 Status: {{status}}\n📅 Valid until: {{endDate}}",
+    "confirm_cancel_message": "⚠️ <b>Confirm Cancellation</b>\n\nAre you sure you want to cancel your subscription?\n\nAfter cancellation, access to premium features will be limited.",
+    "subscription_cancelled": "✅ <b>Subscription Cancelled</b>\n\nYour \"{{planName}}\" subscription has been cancelled.\nAccess to premium features will remain until {{endDate}}.",
+    "subscription_paused": "⏸️ <b>Subscription Paused</b>\n\nYour \"{{planName}}\" subscription has been paused.\nYou can resume it at any time.",
+    "subscription_resumed": "▶️ <b>Subscription Resumed</b>\n\nYour \"{{planName}}\" subscription has been successfully resumed.\nWelcome back!",
+    "error_loading_plans": "❌ Error loading subscription plans. Please try again later.",
+    "error_creating_subscription": "❌ Error creating subscription. Please try again later.",
+    "error_checking_status": "❌ Error checking subscription status. Please try again later.",
+    "error_cancelling": "❌ Error cancelling subscription. Please try again later.",
+    "error_pausing": "❌ Error pausing subscription. Please try again later.",
+    "error_resuming": "❌ Error resuming subscription. Please try again later.",
+    "status": {
+      "active": "Active",
+      "paused": "Paused",
+      "cancelled": "Cancelled",
+      "expired": "Expired"
+    }
+  }
+}

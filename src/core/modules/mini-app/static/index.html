@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evernow - Персональная гипотеза</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Inter font для glassmorphism дизайна -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <!-- Material Design Icons для красивых иконок -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Font Awesome для дополнительных иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Telegram WebApp SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Премиальный заголовок с glassmorphism -->
+      <header class="header animate-fadeIn">
+        <h2 id="report-title" style="display: none"></h2>
+        <p id="report-subtitle" style="display: none"></p>
+      </header>
+
+      <!-- Основной контент -->
+      <main id="content">
+        <!-- Состояние загрузки с премиальным дизайном -->
+        <div id="loading" class="loading liquid animate-fadeIn" style="display: none">
+          <p id="loading_title"></p>
+          <p id="loading_subtitle" style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.8"></p>
+        </div>
+
+        <!-- Состояние ошибки с улучшенным дизайном -->
+        <div id="error" class="error liquid animate-fadeIn" style="display: none">
+          <p style="color: red">Произошла ошибка при анализе</p>
+          <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.8">Обратитесь в поддержку.</p>
+          <!-- <button onclick="window.location.reload()" class="action-button liquid" style="margin-top: 1rem">
+            <i class="fas fa-redo"></i><span>Попробовать ещё раз</span>
+          </button> -->
+        </div>
+
+        <!-- Контейнер для теста Люшера -->
+        <div id="luscher-test" style="display: none" class="animate-fadeIn">
+          <div class="luscher-header">
+            <h1 id="luscher-title"></h1>
+            <h2 id="luscher-undertitle">Выберите цвета от приятного к неприятному</h2>
+            <p id="luscher-subtitle">После первого круга начнётся второй, он нужен нам для более точного анализа</p>
+          </div>
+          <div id="palette" class="palette-grid liquid">
+            <!-- Цвета будут добавлены динамически -->
+          </div>
+          <div id="progress" class="text-center text-gray-600 mt-4"></div>
+        </div>
+
+        <!-- Основной контент с гипотезой -->
+        <div id="hypothesis-content" style="display: none" class="animate-fadeIn">
+          <!-- Контейнер для карточек гипотезы -->
+          <div id="hypothesis-text">
+            <!-- Карточки будут загружены здесь -->
+          </div>
+
+          <!-- ВРЕМЕННО ЗАКОММЕНТИРОВАНО: Социальная карточка -->
+          <!-- 
+          <div class="divider"></div>
+          <div class="social-image-container">
+            <div class="social-image-header">
+              <h3>
+                <i class="fas fa-image" style="margin-right: 0.75rem"></i>
+                Твоя карточка для соцсетей
+              </h3>
+              <p>Поделись результатом с друзьями в стильном формате</p>
+            </div>
+
+            <div class="social-image-wrapper liquid shimmer">
+              <img
+                id="social-image"
+                class="social-image"
+                alt="Социальное изображение с инсайт отчётом"
+                style="display: none"
+              />
+
+              <button id="download-overlay-btn" class="action-button liquid" style="display: none">
+                <i class="fas fa-download"></i><span>Скачать</span>
+              </button>
+
+              <div
+                id="social-image-placeholder"
+                class="loading liquid"
+                style="width: 100%; max-width: 400px; height: 300px; margin: 0 auto"
+              >
+                <p>Создаю магию...</p>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          -->
+
+          <!-- Премиальные кнопки действий -->
+          <div class="actions">
+            <button id="return-btn" class="action-button liquid action-button-primary">
+              <i class="fas fa-check-circle"></i><span>Перейти к главному выводу</span>
+            </button>
+
+            <!-- <button id="share-btn" class="action-button liquid">
+              <i class="fas fa-share-alt"></i><span>Поделиться результатом</span>
+            </button> -->
+          </div>
+        </div>
+      </main>
+
+      <!-- Уведомления с премиальным дизайном -->
+      <div id="status-message" class="status-message" style="display: none"></div>
+    </div>
+
+    <script>
+      // Эффект следования за курсором для shimmer
+      document.addEventListener('mousemove', (e) => {
+        document.documentElement.style.setProperty('--x', e.clientX + 'px');
+        document.documentElement.style.setProperty('--y', e.clientY + 'px');
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

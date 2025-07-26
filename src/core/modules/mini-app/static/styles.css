@@ -184,7 +184,7 @@ body::before {
   flex-direction: column;
   gap: var(--spacing);
   margin-top: 2rem; /* Отступ сверху от карточек */
-  margin-bottom: 2rem; /* Отступ снизу */
+  margin-bottom: 50vh; /* Увеличенный отступ снизу для центрирования кнопки при скролле */
 }
 
 .action-button {
@@ -359,13 +359,42 @@ body::before {
 
 /* Стили для кнопки копирования удалены */
 
-/* Темная кнопка "Завершить" */
+/* Lime Green Primary Button - Enhanced Visibility */
 .action-button-primary {
-  background: rgba(49, 57, 68, 0.25);
-  color: #fff;
+  background: linear-gradient(135deg, #00FF7F 0%, #32CD32 50%, #228B22 100%);
+  color: #000;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+  border: 2px solid #00FF7F;
+  box-shadow: 
+    0 8px 32px rgba(0, 255, 127, 0.6),
+    0 4px 16px rgba(50, 205, 50, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  transform: translateY(0);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.action-button-primary::before {
+  background: linear-gradient(135deg, #00FF7F, #32CD32, #228B22);
+}
+
 .action-button-primary:hover {
-  background: rgba(49, 57, 68, 0.35);
+  background: linear-gradient(135deg, #32FF32 0%, #00FF7F 50%, #32CD32 100%);
+  box-shadow: 
+    0 12px 48px rgba(0, 255, 127, 0.8),
+    0 6px 20px rgba(50, 205, 50, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
+  border-color: #32FF32;
+}
+
+.action-button-primary:active {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 24px rgba(0, 255, 127, 0.7),
+    0 3px 12px rgba(50, 205, 50, 0.5);
 }
 
 /* Стили для иконок в кнопках */

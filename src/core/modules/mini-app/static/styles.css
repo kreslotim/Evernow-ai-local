@@ -167,6 +167,19 @@ body::before {
   margin: 0;
 }
 
+/* Стили для форматированного текста в гипотезе */
+.card-title strong,
+.card-content strong {
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.card-title em,
+.card-content em {
+  font-style: italic;
+  color: #4a5568;
+}
+
 /* Стили для лучшего отображения абзацев в тексте гипотезы */
 .hypothesis-text p {
   margin-bottom: 1em;

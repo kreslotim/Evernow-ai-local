@@ -631,10 +631,27 @@ class MiniAppManager {
         const title = lines[0]; // Первая строка - заголовок
         const content = lines.slice(1).join('\n').trim(); // Остальные строки - содержание
 
+        // Обрабатываем bold форматирование в заголовке и содержимом
+        const processedTitle = title
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*(.*?)\*/g, '<em>$1</em>');
+        
+        const processedContent = content 
+          ? content
+              .replace(/\n/g, '<br>')
+              .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+              .replace(/\*(.*?)\*/g, '<em>$1</em>')
+              // Специальная обработка для конкретных заголовков разделов
+              .replace(/(Что отпустить с благодарностью, что взрастить)/g, '<strong>$1</strong>')
+              .replace(/(Дорожная карта роста)/g, '<strong>$1</strong>')
+              .replace(/(Итог)/g, '<strong>$1</strong>')
+              .replace(/(Инсайты)/g, '<strong>$1</strong>')
+          : '';
+
         cardsHTML += `
           <div class="hypothesis-item">
-            <div class="card-title">${title}</div>
-            ${content ? `<div class="card-content">${content.replace(/\n/g, '<br>')}</div>` : ''}
+            <div class="card-title">${processedTitle}</div>
+            ${processedContent ? `<div class="card-content">${processedContent}</div>` : ''}
           </div>
         `;
       });

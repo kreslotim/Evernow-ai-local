@@ -297,16 +297,16 @@ class MiniAppManager {
    * Инициализирует тест Люшера с цветной палитрой
    */
   async initializeLuscherTest() {
-    // Классические 8 цветов теста Люшера (как в оригинале)
+    // Классические 8 цветов теста Люшера (яркие и насыщенные)
     const luscherColors = [
-      { id: 'blue', name: 'Синий', color: '#4C6DFF' },
-      { id: 'green', name: 'Зеленый', color: '#2CBF8D' },
-      { id: 'red', name: 'Красный', color: '#FF4F4F' },
-      { id: 'yellow', name: 'Желтый', color: '#FFD633' },
-      { id: 'violet', name: 'Фиолетовый', color: '#9461FF' },
-      { id: 'brown', name: 'Коричневый', color: '#B68350' },
-      { id: 'black', name: 'Черный', color: '#242424' },
-      { id: 'grey', name: 'Серый', color: '#989898' },
+      { id: 'blue', name: 'Синий', color: '#0066FF' },
+      { id: 'green', name: 'Зеленый', color: '#00CC66' },
+      { id: 'red', name: 'Красный', color: '#FF3333' },
+      { id: 'yellow', name: 'Желтый', color: '#FFDD00' },
+      { id: 'violet', name: 'Фиолетовый', color: '#8A2BE2' },
+      { id: 'brown', name: 'Коричневый', color: '#D2691E' },
+      { id: 'black', name: 'Черный', color: '#000000' },
+      { id: 'grey', name: 'Серый', color: '#808080' },
     ];
 
     // Инициализируем состояние теста
